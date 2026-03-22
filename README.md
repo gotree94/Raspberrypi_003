@@ -1,6 +1,7 @@
 # 라즈베리파이로 만드는 인공지능과 사물인터넷
 
-<img width="322" height="441" alt="002" src="https://github.com/user-attachments/assets/c8a2f8b8-b4dd-48f2-925c-5c4707c2d804" />
+<img src="./002.jpg" width="400">
+
 
 ---
 
