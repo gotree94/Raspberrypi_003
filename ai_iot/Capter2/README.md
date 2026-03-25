@@ -4,7 +4,7 @@
 
 ### 2.1 디지털 출력으로 LED 제어하기 64
 
-* LED 1개 깜빡이기 64
+* 2_1_1 LED 1개 깜빡이기 64
 
 ```
 from gpiozero import LED
@@ -19,7 +19,7 @@ while True :
     time.sleep(1.0)
 ```
 
-안전하게 프로그램 종료하기 67  
+* 2_1_2 안전하게 프로그램 종료하기 67  
 
 ```
 from gpiozero import LED
@@ -39,7 +39,7 @@ except KeyboardInterrupt:
     print("end")
 ```
 
-LED 여러 개 깜빡이기 68  
+* 2_1_3 LED 여러 개 깜빡이기 68  
 
 ```
 from gpiozero import LED
@@ -72,7 +72,7 @@ except KeyboardInterrupt:
 
 ```
 
-값을 직접 입력하여 LED 켜고 끄기 69  
+* 2_1_4 값을 직접 입력하여 LED 켜고 끄기 69  
 
 ```
 from gpiozero import LED
@@ -93,7 +93,7 @@ except KeyboardInterrupt:
 
 ```
 
-GPIO를 제어하는 코드로 LED 켜고 끄기 70  
+* 2_1_5 GPIO를 제어하는 코드로 LED 켜고 끄기 70  
 
 ```
 from gpiozero import OutputDevice
