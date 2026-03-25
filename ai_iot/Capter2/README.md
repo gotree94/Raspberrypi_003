@@ -35,7 +35,7 @@ while True :
 * 2_1_2 안전하게 프로그램 종료하기 67  
 
 ```
-python 2_1_1.py
+python 2_1_2.py
 ```
 
 ```
@@ -59,7 +59,7 @@ except KeyboardInterrupt:
 * 2_1_3 LED 여러 개 깜빡이기 68  
 
 ```
-python 2_1_1.py
+python 2_1_3.py
 ```
 
 ```
@@ -96,7 +96,7 @@ except KeyboardInterrupt:
 * 2_1_4 값을 직접 입력하여 LED 켜고 끄기 69  
 
 ```
-python 2_1_1.py
+python 2_1_4.py
 ```
 
 ```
@@ -121,7 +121,7 @@ except KeyboardInterrupt:
 * 2_1_5 GPIO를 제어하는 코드로 LED 켜고 끄기 70  
 
 ```
-python 2_1_1.py
+python 2_1_5.py
 ```
 
 ```
@@ -159,7 +159,7 @@ except KeyboardInterrupt:
 * 2_2_1 스위치값 입력받기 72  
 
 ```
-python 2_1_1.py
+python 2_2_1.py
 ```
 
 ```
@@ -181,7 +181,7 @@ except KeyboardInterrupt:
 * 2_2_2 스위치를 누를 때만 출력하기 74
 
 ```
-python 2_1_1.py
+python 2_2_2.py
 ```
 
 ```
@@ -208,7 +208,7 @@ except KeyboardInterrupt:
 * 2_2_3 스위치를 누르면 한 번만 출력하기 75  
 
 ```
-python 2_1_1.py
+python 2_2_3.py
 ```
 
 ```
@@ -240,7 +240,7 @@ except KeyboardInterrupt:
 * 2_2_4 이벤트 방식으로 간단하게 버튼 입력받기 78  
 
 ```
-python 2_1_1.py
+python 2_2_4.py
 ```
 
 ```
@@ -264,7 +264,7 @@ except KeyboardInterrupt:
 * 2_2_5 이벤트 방식으로 여러 개의 버튼 입력받기 78  
 
 ```
-python 2_1_1.py
+python 2_2_5.py
 ```
 
 ```
@@ -315,7 +315,7 @@ except KeyboardInterrupt:
 * 2_3_1 빨간색 LED의 밝기 조절하기 81 
 
 ```
-python 2_1_1.py
+python 2_3_1.py
 ```
 
 ```
@@ -347,7 +347,7 @@ except KeyboardInterrupt:
 * 2_3_2 RGB 모두 켜서 밝기 조절하기 82
 
 ```
-python 2_1_1.py
+python 2_3_2.py
 ```
 
 ```
@@ -387,7 +387,7 @@ except KeyboardInterrupt:
 * 2_3_3 RGB 조절하여 무지개 색상 표현하기 84
 
 ```
-python 2_1_1.py
+python 2_3_3.py
 ```
 
 ```
@@ -427,7 +427,7 @@ except KeyboardInterrupt:
 * 2_3_4 PWMOutputDevice 사용하기 86  
 
 ```
-python 2_1_1.py
+python 2_3_4.py
 ```
 
 ```
@@ -462,7 +462,7 @@ except KeyboardInterrupt:
 * 2_4_1 도레미파솔라시도 음 출력하기 88
 
 ```
-python 2_1_1.py
+python 2_4_1.py
 ```
 
 ```
@@ -500,7 +500,7 @@ except KeyboardInterrupt:
 * 2_4_2 노래 출력하기 90  
 
 ```
-python 2_1_1.py
+python 2_4_2.py
 ```
 
 ```
