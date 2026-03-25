@@ -41,7 +41,7 @@ print("numpy:", numpy.__version__)
 
 * 9_1_2 기본 예제로 객체 검출하기 287  
 
-```
+```python
 import cv2
 from ultralytics import YOLO
 
@@ -121,7 +121,7 @@ if __name__ == "__main__":
 
 * 9_1_3 검출된 객체로 조건 설정하여 부저 울리기 291
 
-```
+```python
 import cv2
 from ultralytics import YOLO
 from gpiozero import PWMOutputDevice
@@ -194,7 +194,7 @@ if __name__ == "__main__":
 
 * 9_2_1 라즈베리파이에서 버튼을 눌러 사진 찍어 저장하기 294
 
-```
+```python
 import os
 from datetime import datetime
 import cv2
@@ -227,7 +227,7 @@ if __name__ == "__main__":
 
 * 9_2_2 압축하기 296
 
-```
+```python
 import os
 import zipfile
 
@@ -256,7 +256,7 @@ if __name__ == "__main__":
 ### 9.3 사용자 학습 모델 만들기 299
 데이터 라벨링 299  
 
-```
+```python
 import cv2
 from ultralytics import YOLO
 
@@ -305,7 +305,7 @@ if __name__ == "__main__":
 모델 파일 라즈베리파이로 이동 321  
 내가 만든 모델로 객체 인식하기 322  
 
-```
+```python
 import cv2
 from ultralytics import YOLO
 from gpiozero import LEDBoard
