@@ -7,7 +7,7 @@
 * 라이브러리 설치 286  
 
 ```
-pip install torch opencv-python ultralytics
+pip install torch opencv-python ultralytics --break-system-packages
 
 1단계: 기존 torch 완전 제거
 pip uninstall torch torchvision triton --break-system-packages -y
