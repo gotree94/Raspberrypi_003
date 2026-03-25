@@ -559,6 +559,12 @@ if __name__ == "__main__":
 
 나만의 모델 만들기 (ultralytics hub) 311  
 
+* https://platform.ultralytics.com/home
+
+
+
+
+
 ### 9.4 사용자 학습 모델 적용하여 객체 검출하기 320
 회로 연결 320  
 | 라즈베리파이 핀 | 부품 | 
