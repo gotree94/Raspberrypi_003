@@ -27,7 +27,7 @@ python3 -c "import torch; print(torch.__version__)"
 
 * 9_1_1 라이브러리 확인 286
 
-```
+```python
 import cv2
 import torch
 import ultralytics
