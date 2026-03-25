@@ -3,7 +3,7 @@
 ## 챕터9. Yolo를 활용한 인공지능 객체인식
 
 <details>
-<summary><b>### 9.1 YOLOv8으로 객체 검출하기 285</b></summary>
+<summary><b>9.1 YOLOv8으로 객체 검출하기 285</b></summary>
 
 * 회로 연결 285</b></summary>
 
@@ -357,7 +357,7 @@ if __name__ == "__main__":
 ```
 
 
-###📌 YOLO v8에서 기본 예제로 제공되는 80개의 인식 리스트
+📌 YOLO v8에서 기본 예제로 제공되는 80개의 인식 리스트
 
 | ID | Class           | ID | Class           | ID | Class           | ID | Class           | ID | Class           |
 |----|----------------|----|----------------|----|----------------|----|----------------|----|----------------|
@@ -452,7 +452,7 @@ if __name__ == "__main__":
 </details>
 
 <details>
-<summary><b>### 9-2.사용자 모델 만들기 294</b></summary>
+<summary><b>9-2.사용자 모델 만들기 294</b></summary>
 
 * 9_2_1 라즈베리파이에서 버튼을 눌러 사진 찍어 저장하기 294
 
@@ -516,7 +516,7 @@ if __name__ == "__main__":
 </details>
 
 <details>
-<summary><b>### 9.3 사용자 학습 모델 만들기 299</b></summary>
+<summary><b>9.3 사용자 학습 모델 만들기 299</b></summary>
 * 데이터 라벨링 299  
 
 ```python
@@ -568,7 +568,7 @@ if __name__ == "__main__":
 
 
 <details>
-<summary><b>### 9.4 사용자 학습 모델 적용하여 객체 검출하기 320</b></summary>
+<summary><b>9.4 사용자 학습 모델 적용하여 객체 검출하기 320</b></summary>
 * 회로 연결 320
 
 | 라즈베리파이 핀 | 부품 | 
