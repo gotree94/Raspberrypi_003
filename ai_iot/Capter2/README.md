@@ -243,10 +243,130 @@ except KeyboardInterrupt:
 ```
 
 ### 2.3 PWM으로 RGB LED 제어하기 80
-빨간색 LED의 밝기 조절하기 81  
-RGB 모두 켜서 밝기 조절하기 82  
-RGB 조절하여 무지개 색상 표현하기 84  
-PWMOutputDevice 사용하기 86  
+
+* 2_3_1 빨간색 LED의 밝기 조절하기 81 
+
+```
+from gpiozero import PWMLED
+import time
+
+led = PWMLED(10)  
+
+try:
+    while True:
+        led.value = 0.0
+        time.sleep(1.0)
+        
+        led.value = 0.3
+        time.sleep(1.0)
+        
+        led.value = 0.6
+        time.sleep(1.0)
+        
+        led.value = 1.0
+        time.sleep(1.0)
+
+except KeyboardInterrupt:
+    led.off()
+    print("end")
+
+```
+
+* 2_3_2 RGB 모두 켜서 밝기 조절하기 82
+
+```
+from gpiozero import PWMLED
+import time
+
+led_R = PWMLED(10)
+led_G = PWMLED(9)
+led_B = PWMLED(11)
+
+try:
+    while True:
+        led_R.value = 0.0
+        led_G.value = 0.0
+        led_B.value = 0.0
+        time.sleep(1.0)
+        
+        led_R.value = 0.5
+        led_G.value = 0.5
+        led_B.value = 0.5
+        time.sleep(1.0)
+        
+        led_R.value = 1.0
+        led_G.value = 1.0
+        led_B.value = 1.0
+        time.sleep(1.0)
+
+except KeyboardInterrupt:
+    led_R.off()
+    led_G.off()
+    led_B.off()
+    print("end")
+
+
+```
+
+* 2_3_3 RGB 조절하여 무지개 색상 표현하기 84
+
+```
+from gpiozero import PWMLED
+import time
+
+led_R = PWMLED(10)
+led_G = PWMLED(9)
+led_B = PWMLED(11)
+
+colors = [
+    (1.0, 0.0, 0.0),  
+    (1.0, 0.5, 0.0),  
+    (1.0, 1.0, 0.0),  
+    (0.0, 1.0, 0.0), 
+    (0.0, 0.0, 1.0), 
+    (0.3, 0.0, 0.5),  
+    (0.6, 0.0, 1.0), 
+]
+
+try:
+    while True:
+        for r, g, b in colors:
+            led_R.value = r
+            led_G.value = g
+            led_B.value = b
+            time.sleep(1.0)
+
+except KeyboardInterrupt:
+    led_R.off()
+    led_G.off()
+    led_B.off()
+    print("end")
+
+```
+ 
+* 2_3_4 PWMOutputDevice 사용하기 86  
+
+```
+from gpiozero import PWMOutputDevice
+import time
+
+led_R = PWMOutputDevice(10)
+
+try:
+    while True:
+        led_R.value = 0.0 
+        time.sleep(1)
+        led_R.value = 0.5 
+        time.sleep(1)
+        led_R.value = 1.0 
+        time.sleep(1)
+
+except KeyboardInterrupt:
+    led_R.off()
+    print("end")
+
+```
+
 
 ### 2.4 피에조 부저 출력하기 87
 도레미파솔라시도 음 출력하기 88  
