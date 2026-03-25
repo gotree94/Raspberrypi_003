@@ -514,7 +514,7 @@ except KeyboardInterrupt:
     pass
 ```
 
-* 2_5_3 전압으로 환산하여 입력받기 95
+* 2_5_3 전압으로 환산하여 입력받기
 
 ```
 from gpiozero import MCP3208
