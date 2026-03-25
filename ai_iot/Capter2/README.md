@@ -369,10 +369,128 @@ except KeyboardInterrupt:
 
 
 ### 2.4 피에조 부저 출력하기 87
-도레미파솔라시도 음 출력하기 88  
-노래 출력하기 90  
+* 2_4_1 도레미파솔라시도 음 출력하기 88
+
+```
+from gpiozero import PWMOutputDevice
+from time import sleep
+
+buzzer = PWMOutputDevice(18)
+
+notes = {
+    "do": 261,
+    "re": 293,
+    "mi": 329,
+    "fa": 349,
+    "sol": 392,
+    "la": 440,
+    "si": 493,
+    "do'": 523
+}
+
+try:
+    for name, freq in notes.items():
+        print(name)
+        buzzer.frequency = freq
+        buzzer.value = 0.5
+        sleep(0.5)
+        buzzer.value = 0
+        sleep(0.05)
+
+except KeyboardInterrupt:
+    buzzer.off()
+    print("end")
+
+```
+
+* 2_4_2 노래 출력하기 90  
+
+```
+```
 
 ### 2.5 아날로그 입력으로 센서값 입력받기 92
-라즈베리파이 설정 93  
-MPC3208 칩을 이용해서 아날로그 입력받기 94  
-전압으로 환산하여 입력받기 95  
+* 2_5_1 라즈베리파이 설정 93  
+
+```
+from gpiozero import PWMOutputDevice
+from time import sleep
+
+buzzer = PWMOutputDevice(18)
+
+notes = {
+    "C": 261,
+    "D": 293,
+    "E": 329,
+    "F": 349,
+    "G": 392,
+    "A": 440,
+    "B": 493,
+    "C5": 523,
+    " ": 0
+}
+
+melody = [
+    "C", "C", "G", "G", "A", "A", "G", " ",
+    "F", "F", "E", "E", "D", "D", "C", " ",
+    "G", "G", "F", "F", "E", "E", "D", " ",
+    "G", "G", "F", "F", "E", "E", "D", " ",
+    "C", "C", "G", "G", "A", "A", "G", " ",
+    "F", "F", "E", "E", "D", "D", "C"
+]
+
+try:
+    for note in melody:
+        freq = notes[note]
+        if freq == 0:
+            buzzer.value = 0
+        else:
+            buzzer.frequency = freq
+            buzzer.value = 0.5
+        sleep(0.4)
+        buzzer.value = 0
+        sleep(0.05)
+
+except KeyboardInterrupt:
+    buzzer.off()
+    print("end")
+
+```
+
+* 2_5_2 MPC3208 칩을 이용해서 아날로그 입력받기 94  
+
+```
+from gpiozero import MCP3208
+import time
+
+cds = MCP3208(channel=0)
+
+try:
+    while 1:
+        cds_value = cds.value * 100
+        print(cds_value)
+        time.sleep(0.2)
+        
+except KeyboardInterrupt:
+    pass
+```
+
+* 2_5_3 전압으로 환산하여 입력받기 95
+
+```
+from gpiozero import MCP3208
+import time
+
+cds = MCP3208(channel=0)
+
+try:
+    while 1:
+        cds_value = cds.value * 3.3
+        print(cds_value)
+        time.sleep(0.2)
+        
+except KeyboardInterrupt:
+    pass
+```
+
+
+
