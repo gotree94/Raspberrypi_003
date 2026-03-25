@@ -49,7 +49,7 @@ pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu -
 python3 -c "import torch; print(torch.__version__)"
 ```
 
-```sh
+```bash
 admin@rp5-nwk:~/Raspberrypi_003/ai_iot $ pip install torch opencv-python ultralytics --break-system-packages
 Defaulting to user installation because normal site-packages is not writeable
 Collecting torch
