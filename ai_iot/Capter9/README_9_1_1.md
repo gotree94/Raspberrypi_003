@@ -234,6 +234,9 @@ Uninstalling torchvision-0.26.0:
 Found existing installation: triton 3.6.0
 Uninstalling triton-3.6.0:
   Successfully uninstalled triton-3.6.0
+```
+
+```bash
 admin@rp5-nwk:~/Raspberrypi_003/ai_iot $ pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu --break-system-packages
 Defaulting to user installation because normal site-packages is not writeable
 Looking in indexes: https://download.pytorch.org/whl/cpu
@@ -260,10 +263,11 @@ Installing collected packages: torch, torchvision
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 0/2 [torch]  WARNING: The scripts torchfrtrace and torchrun are installed in '/home/admin/.local/bin' which is not on PATH.
   Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
 Successfully installed torch-2.11.0+cpu torchvision-0.26.0+cpu
+```
+
+```bash
 admin@rp5-nwk:~/Raspberrypi_003/ai_iot $ python3 -c "import torch; print(torch.__version__)"
 2.11.0+cpu
-admin@rp5-nwk:~/Raspberrypi_003/ai_iot $
-
 ```
 
 * 9_1_1 라이브러리 확인 286
