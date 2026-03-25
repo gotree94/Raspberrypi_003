@@ -16,6 +16,10 @@
 * 2_1_1 LED 1개 깜빡이기 64
 
 ```
+python 2_1_1.py
+```
+
+```
 from gpiozero import LED
 import time
 
@@ -29,6 +33,10 @@ while True :
 ```
 
 * 2_1_2 안전하게 프로그램 종료하기 67  
+
+```
+python 2_1_1.py
+```
 
 ```
 from gpiozero import LED
@@ -49,6 +57,10 @@ except KeyboardInterrupt:
 ```
 
 * 2_1_3 LED 여러 개 깜빡이기 68  
+
+```
+python 2_1_1.py
+```
 
 ```
 from gpiozero import LED
@@ -84,6 +96,10 @@ except KeyboardInterrupt:
 * 2_1_4 값을 직접 입력하여 LED 켜고 끄기 69  
 
 ```
+python 2_1_1.py
+```
+
+```
 from gpiozero import LED
 import time
 
@@ -103,6 +119,10 @@ except KeyboardInterrupt:
 ```
 
 * 2_1_5 GPIO를 제어하는 코드로 LED 켜고 끄기 70  
+
+```
+python 2_1_1.py
+```
 
 ```
 from gpiozero import OutputDevice
@@ -139,6 +159,10 @@ except KeyboardInterrupt:
 * 2_2_1 스위치값 입력받기 72  
 
 ```
+python 2_1_1.py
+```
+
+```
 from gpiozero import Button
 import time
 
@@ -155,6 +179,10 @@ except KeyboardInterrupt:
 ```
 
 * 2_2_2 스위치를 누를 때만 출력하기 74
+
+```
+python 2_1_1.py
+```
 
 ```
   from gpiozero import Button
@@ -178,6 +206,10 @@ except KeyboardInterrupt:
 
 ```
 * 2_2_3 스위치를 누르면 한 번만 출력하기 75  
+
+```
+python 2_1_1.py
+```
 
 ```
 from gpiozero import Button
@@ -208,6 +240,10 @@ except KeyboardInterrupt:
 * 2_2_4 이벤트 방식으로 간단하게 버튼 입력받기 78  
 
 ```
+python 2_1_1.py
+```
+
+```
 from gpiozero import Button
 
 SW1 = Button(5, pull_up=False)
@@ -226,6 +262,10 @@ except KeyboardInterrupt:
 ```
 
 * 2_2_5 이벤트 방식으로 여러 개의 버튼 입력받기 78  
+
+```
+python 2_1_1.py
+```
 
 ```
 from gpiozero import Button
@@ -275,6 +315,10 @@ except KeyboardInterrupt:
 * 2_3_1 빨간색 LED의 밝기 조절하기 81 
 
 ```
+python 2_1_1.py
+```
+
+```
 from gpiozero import PWMLED
 import time
 
@@ -301,6 +345,10 @@ except KeyboardInterrupt:
 ```
 
 * 2_3_2 RGB 모두 켜서 밝기 조절하기 82
+
+```
+python 2_1_1.py
+```
 
 ```
 from gpiozero import PWMLED
@@ -339,6 +387,10 @@ except KeyboardInterrupt:
 * 2_3_3 RGB 조절하여 무지개 색상 표현하기 84
 
 ```
+python 2_1_1.py
+```
+
+```
 from gpiozero import PWMLED
 import time
 
@@ -375,6 +427,10 @@ except KeyboardInterrupt:
 * 2_3_4 PWMOutputDevice 사용하기 86  
 
 ```
+python 2_1_1.py
+```
+
+```
 from gpiozero import PWMOutputDevice
 import time
 
@@ -404,6 +460,10 @@ except KeyboardInterrupt:
 
 ### 2.4 피에조 부저 출력하기 87
 * 2_4_1 도레미파솔라시도 음 출력하기 88
+
+```
+python 2_1_1.py
+```
 
 ```
 from gpiozero import PWMOutputDevice
@@ -438,6 +498,10 @@ except KeyboardInterrupt:
 ```
 
 * 2_4_2 노래 출력하기 90  
+
+```
+python 2_1_1.py
+```
 
 ```
 from gpiozero import PWMOutputDevice
@@ -501,6 +565,10 @@ except KeyboardInterrupt:
 * 2_5_2 MPC3208 칩을 이용해서 아날로그 입력받기 94  
 
 ```
+python 2_5_1.py
+```
+
+```
 from gpiozero import MCP3208
 import time
 
@@ -517,6 +585,10 @@ except KeyboardInterrupt:
 ```
 
 * 2_5_3 전압으로 환산하여 입력받기
+
+```
+python 2_5_2.py
+```
 
 ```
 from gpiozero import MCP3208
