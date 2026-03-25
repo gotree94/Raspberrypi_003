@@ -287,6 +287,17 @@ print("ultralytics:", ultralytics.__version__)
 print("numpy:", numpy.__version__)
 ```
 
+```bash
+admin@rp5-nwk:~/Raspberrypi_003/ai_iot $ python 9_1_1.py
+Creating new Ultralytics Settings v0.0.6 file ✅
+View Ultralytics Settings with 'yolo settings' or at '/home/admin/.config/Ultralytics/settings.json'
+Update Settings with 'yolo settings key=value', i.e. 'yolo settings runs_dir=path/to/dir'. For help see https://docs.ultralytics.com/quickstart/#ultralytics-settings.
+cv2: 4.13.0
+torch: 2.11.0+cpu
+ultralytics: 8.4.26
+numpy: 2.2.4
+```
+
 * 9_1_2 기본 예제로 객체 검출하기 287  
 
 ```python
