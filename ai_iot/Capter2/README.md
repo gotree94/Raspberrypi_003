@@ -116,10 +116,131 @@ except KeyboardInterrupt:
 
 ### 2.2 디지털 입력으로 버튼 입력받기 71
 회로연결 71  
-스위치값 입력받기 72  
-스위치를 누를 때만 출력하기 74  
-스위치를 누르면 한 번만 출력하기 75  
-이벤트 방식으로 여러 개의 버튼 입력받기 78  
+
+* 2_2_1 스위치값 입력받기 72  
+
+```
+from gpiozero import Button
+import time
+
+SW1 = Button(5, pull_up=False)
+
+try:
+    while True:
+        sw1_value = SW1.is_pressed
+        print(sw1_value)
+        time.sleep(0.1)
+
+except KeyboardInterrupt:
+    print("end")
+```
+
+* 2_2_2 스위치를 누를 때만 출력하기 74
+
+```
+  from gpiozero import Button
+import time
+
+SW1 = Button(5, pull_up=False)
+
+old_value = 0
+new_value = 0
+
+try:
+    while True:
+        new_value = SW1.is_pressed
+        if new_value != old_value:
+            old_value = new_value
+            print("click")
+            time.sleep(0.2)
+
+except KeyboardInterrupt:
+    print("end")
+
+```
+* 2_2_3 스위치를 누르면 한 번만 출력하기 75  
+
+```
+from gpiozero import Button
+import time
+
+SW1 = Button(5, pull_up=False)
+
+old_value = 0
+new_value = 0
+
+try:
+    while True:
+        new_value = SW1.is_pressed
+        if new_value != old_value:
+            old_value = new_value
+            
+            if new_value == 1:
+                print("click")
+            
+            time.sleep(0.2)
+
+except KeyboardInterrupt:
+    print("end")
+
+
+```
+
+* 2_2_4 이벤트 방식으로 간단하게 버튼 입력받기 78  
+
+```
+from gpiozero import Button
+
+SW1 = Button(5, pull_up=False)
+
+def on_click():
+    print("click")
+
+SW1.when_pressed = on_click
+
+try:
+    while True :
+        pass
+
+except KeyboardInterrupt:
+    print("end")
+```
+
+* 2_2_5 이벤트 방식으로 여러 개의 버튼 입력받기 78  
+
+```
+from gpiozero import Button
+
+SW1 = Button(5, pull_up=False)
+SW2 = Button(6, pull_up=False)
+SW3 = Button(13, pull_up=False)
+SW4 = Button(19, pull_up=False)
+
+def handle_sw1():
+    print("SW1 pressed")
+
+def handle_sw2():
+    print("SW2 pressed")
+
+def handle_sw3():
+    print("SW3 pressed")
+
+def handle_sw4():
+    print("SW4 pressed")
+
+SW1.when_pressed = handle_sw1
+SW2.when_pressed = handle_sw2
+SW3.when_pressed = handle_sw3
+SW4.when_pressed = handle_sw4
+
+try:
+    while True :
+        pass
+
+except KeyboardInterrupt:
+    print("end")
+
+```
 
 ### 2.3 PWM으로 RGB LED 제어하기 80
 빨간색 LED의 밝기 조절하기 81  
