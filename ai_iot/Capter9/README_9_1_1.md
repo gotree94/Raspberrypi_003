@@ -2,10 +2,10 @@
 
 ## 챕터9. Yolo를 활용한 인공지능 객체인식
 
-### 9.1 YOLOv8으로 객체 검출하기 285
-
 <details>
-<summary><b>* 회로 연결 285</b></summary>
+<summary><b>### 9.1 YOLOv8으로 객체 검출하기 285
+
+* 회로 연결 285</b></summary>
 
 | 라즈베리파이 핀 | 부품 | 
 |:-------:|:-------:|
@@ -298,7 +298,6 @@ torch: 2.11.0+cpu
 ultralytics: 8.4.26
 numpy: 2.2.4
 ```
-</details>
 
 * 9_1_2 기본 예제로 객체 검출하기 287  
 
@@ -450,8 +449,10 @@ if __name__ == "__main__":
         cap.release()
         cv2.destroyAllWindows()
 ```
+</details>
 
-### 9-2.사용자 모델 만들기 294
+<details>
+<summary><b>### 9-2.사용자 모델 만들기 294
 
 * 9_2_1 라즈베리파이에서 버튼을 눌러 사진 찍어 저장하기 294
 
@@ -514,7 +515,8 @@ if __name__ == "__main__":
 ```
 
 
-### 9.3 사용자 학습 모델 만들기 299
+<details>
+<summary><b>### 9.3 사용자 학습 모델 만들기 299
 * 데이터 라벨링 299  
 
 ```python
@@ -562,12 +564,11 @@ if __name__ == "__main__":
 나만의 모델 만들기 (ultralytics hub) 311  
 
 * https://platform.ultralytics.com/home
+</details>
 
 
-
-
-
-### 9.4 사용자 학습 모델 적용하여 객체 검출하기 320
+<details>
+<summary><b>### 9.4 사용자 학습 모델 적용하여 객체 검출하기 320
 * 회로 연결 320
 
 | 라즈베리파이 핀 | 부품 | 
@@ -663,3 +664,5 @@ if __name__ == "__main__":
 ```
 
 * 객체가 검출되면 LED 깜빡이기 324  
+
+</details>
