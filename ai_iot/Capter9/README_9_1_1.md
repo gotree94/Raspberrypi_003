@@ -88,24 +88,253 @@ if __name__ == "__main__":
     finally:
         cap.release()
         cv2.destroyAllWindows()
-
-
 ```
 
-검출된 객체로 조건 설정하여 부저 울리기 291  
+* 9_1_3 검출된 객체로 조건 설정하여 부저 울리기 291
+
+```
+import cv2
+from ultralytics import YOLO
+from gpiozero import PWMOutputDevice
+from time import sleep
+
+buzzer = PWMOutputDevice(18)
+
+def beep():
+    buzzer.frequency = 440
+    buzzer.value = 0.5
+    sleep(0.3)
+    buzzer.value = 0
+
+def draw_detections(frame, results, names):
+    if results is None:
+        return frame
+    for b in results.boxes:
+        cls_id = int(b.cls.item())
+        conf = float(b.conf.item())
+        x1, y1, x2, y2 = map(int, b.xyxy[0].tolist())
+        cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+        label = f"{names[cls_id]} {conf:.2f}"
+        cv2.putText(
+            frame,
+            label,
+            (x1, max(10, y1 - 6)),
+            cv2.FONT_HERSHEY_SIMPLEX,
+            0.5,
+            (0, 255, 0),
+            1,
+        )
+    return frame
+
+if __name__ == "__main__":
+    model = YOLO("yolov8n.pt")
+    cap = cv2.VideoCapture(0)
+
+    if not cap.isOpened():
+        raise SystemExit("Camera open failed")
+
+    try:
+        while True:
+            ok, frame = cap.read()
+            if not ok:
+                break
+
+            results = model(frame, imgsz=320, conf=0.5, iou=0.5, device="cpu")[0]
+
+            person_detected = False
+            for b in results.boxes:
+                if int(b.cls.item()) == 0:
+                    person_detected = True
+                    break
+
+            if person_detected:
+                beep()
+
+            out = draw_detections(frame, results, model.names)
+            cv2.imshow("YOLOv8 (OpenCV)", out)
+
+            if cv2.waitKey(1) & 0xFF == ord("q"):
+                break
+    finally:
+        buzzer.off()
+        cap.release()
+        cv2.destroyAllWindows()
+```
 
 ### 9-2.사용자 모델 만들기 294
-라즈베리파이에서 버튼을 눌러 사진 찍어 저장하기 294  
-압축하기 296  
 
-### 9.2 사용자 학습 모델 만들기 299
+* 9_2_1 라즈베리파이에서 버튼을 눌러 사진 찍어 저장하기 294
+
+```
+import os
+from datetime import datetime
+import cv2
+
+SAVE_DIR = os.path.join(os.path.dirname(__file__), "pictures")
+os.makedirs(SAVE_DIR, exist_ok=True)
+
+if __name__ == "__main__":
+    cap = cv2.VideoCapture(0)
+
+    while cap.isOpened():
+        ok, image = cap.read()
+        if not ok:
+            break
+
+        cv2.imshow("camera", image)
+
+        key = cv2.waitKey(1) & 0xFF
+        if key == ord("s"):
+            filename = datetime.now().strftime("%Y%m%d_%H%M%S_%f") + ".png"
+            path = os.path.join(SAVE_DIR, filename)
+            cv2.imwrite(path, image)
+            print("saved:", path)
+        elif key == ord("q"):
+            break
+
+    cap.release()
+    cv2.destroyAllWindows()
+```
+
+* 9_2_2 압축하기 296
+
+```
+import os
+import zipfile
+
+def zip_pictures_folder():
+    base_dir = os.path.dirname(__file__)
+    pictures_dir = os.path.join(base_dir, "pictures")
+    zip_path = os.path.join(base_dir, "pictures.zip")
+
+    if not os.path.exists(pictures_dir):
+        print("pictures folder not found.")
+        return
+
+    with zipfile.ZipFile(zip_path, 'w', zipfile.ZIP_DEFLATED) as zipf:
+        for root, dirs, files in os.walk(pictures_dir):
+            for file in files:
+                file_path = os.path.join(root, file)
+                arcname = os.path.relpath(file_path, pictures_dir)
+                zipf.write(file_path, arcname)
+    print(f"zip created: {zip_path}")
+
+if __name__ == "__main__":
+    zip_pictures_folder()
+```
+
+
+### 9.3 사용자 학습 모델 만들기 299
 데이터 라벨링 299  
+
+```
+import cv2
+from ultralytics import YOLO
+
+def draw_detections(frame, results, names):
+    if results is None:
+        return frame
+    for b in results.boxes:
+        cls_id = int(b.cls.item())
+        conf = float(b.conf.item())
+        x1, y1, x2, y2 = map(int, b.xyxy[0].tolist())
+        cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+        label = f"{names[cls_id]} {conf:.2f}"
+        cv2.putText(frame, label, (x1, max(10, y1 - 6)),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
+    return frame
+
+if __name__ == "__main__":
+    model = YOLO("iot_model.pt")
+    cap = cv2.VideoCapture(0)
+
+    if not cap.isOpened():
+        raise SystemExit("Camera error")
+
+    try:
+        while True:
+            ok, frame = cap.read()
+            if not ok:
+                break
+
+            results = model(frame, imgsz=320, conf=0.5, iou=0.5, device="cpu")[0]
+
+            out = draw_detections(frame, results, model.names)
+            cv2.imshow("YOLOv8", out)
+
+            if cv2.waitKey(1) == ord('q'):
+                break
+    finally:
+        cap.release()
+        cv2.destroyAllWindows()
+```
+
 나만의 모델 만들기 (ultralytics hub) 311  
 
-### 9.3 사용자 학습 모델 적용하여 객체 검출하기 320
+### 9.4 사용자 학습 모델 적용하여 객체 검출하기 320
 회로 연결 320  
 모델 파일 라즈베리파이로 이동 321  
 내가 만든 모델로 객체 인식하기 322  
+
+```
+import cv2
+from ultralytics import YOLO
+from gpiozero import LEDBoard
+import time
+
+def draw_detections(frame, results, names):
+    if results is None:
+        return frame
+    for b in results.boxes:
+        cls_id = int(b.cls.item())
+        conf = float(b.conf.item())
+        x1, y1, x2, y2 = map(int, b.xyxy[0].tolist())
+        cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+        label = f"{names[cls_id]} {conf:.2f}"
+        cv2.putText(frame, label, (x1, max(10, y1 - 6)),
+                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1)
+    return frame
+
+if __name__ == "__main__":
+    model = YOLO("iot_model.pt")
+    target_names = {"ultrasonic", "vr", "led", "ble"}
+
+    leds = LEDBoard(4, 17, 27, 22)
+    cap = cv2.VideoCapture(0)
+
+    if not cap.isOpened():
+        raise SystemExit("Camera error")
+
+    try:
+        while True:
+            ok, frame = cap.read()
+            if not ok:
+                break
+
+            results = model(frame, imgsz=320, conf=0.5, iou=0.5, device="cpu")[0]
+
+            detected = any(
+                model.names[int(b.cls.item())] in target_names
+                for b in results.boxes
+            )
+
+            if detected:
+                leds.on()
+                time.sleep(0.2)
+                leds.off()
+                time.sleep(0.2)
+
+            out = draw_detections(frame, results, model.names)
+            cv2.imshow("YOLOv8", out)
+
+            if cv2.waitKey(1) == ord('q'):
+                break
+    finally:
+        leds.off()
+        cap.release()
+        cv2.destroyAllWindows()
+```
+
 객체가 검출되면 LED 깜빡이기 324  
 
 </details>
