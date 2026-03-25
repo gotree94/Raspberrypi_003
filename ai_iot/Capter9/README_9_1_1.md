@@ -513,7 +513,7 @@ def zip_pictures_folder():
 if __name__ == "__main__":
     zip_pictures_folder()
 ```
-
+</details>
 
 <details>
 <summary><b>### 9.3 사용자 학습 모델 만들기 299</b></summary>
