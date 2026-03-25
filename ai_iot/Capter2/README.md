@@ -3,11 +3,116 @@
 ## 챕터2. 라즈베리파이 입출력 활용
 
 ### 2.1 디지털 출력으로 LED 제어하기 64
-LED 1개 깜빡이기 64  
+
+* LED 1개 깜빡이기 64
+
+```
+from gpiozero import LED
+import time
+
+led1 = LED(4)
+
+while True :
+    led1.on()
+    time.sleep(1.0)
+    led1.off()
+    time.sleep(1.0)
+```
+
 안전하게 프로그램 종료하기 67  
+
+```
+from gpiozero import LED
+import time
+
+led1 = LED(4)
+
+try :
+    while True :
+        led1.on()
+        time.sleep(1.0)
+        led1.off()
+        time.sleep(1.0)
+
+except KeyboardInterrupt:
+    led1.off()
+    print("end")
+```
+
 LED 여러 개 깜빡이기 68  
+
+```
+from gpiozero import LED
+import time
+
+led1 = LED(4)
+led2 = LED(17)
+led3 = LED(27)
+led4 = LED(22)
+
+try :
+    while True :
+        led1.on()
+        led2.on()
+        led3.on()
+        led4.on()
+        time.sleep(1.0)
+        led1.off()
+        led2.off()
+        led3.off()
+        led4.off()
+        time.sleep(1.0)
+
+except KeyboardInterrupt:
+    led1.off()
+    led2.off()
+    led3.off()
+    led4.off()
+    print("end")
+
+```
+
 값을 직접 입력하여 LED 켜고 끄기 69  
+
+```
+from gpiozero import LED
+import time
+
+led1 = LED(4)
+
+try :
+    while True :
+        led1.value = 1
+        time.sleep(1.0)
+        led1.value = 0
+        time.sleep(1.0)
+
+except KeyboardInterrupt:
+    led1.value = 0
+    print("end")
+
+```
+
 GPIO를 제어하는 코드로 LED 켜고 끄기 70  
+
+```
+from gpiozero import OutputDevice
+import time
+
+led1 = OutputDevice(4)
+
+try:
+    while True:
+        led1.on()
+        time.sleep(1.0)
+        led1.off()
+        time.sleep(1.0)
+
+except KeyboardInterrupt:
+    led1.off()
+    print("end")
+```
+
 
 ### 2.2 디지털 입력으로 버튼 입력받기 71
 회로연결 71  
